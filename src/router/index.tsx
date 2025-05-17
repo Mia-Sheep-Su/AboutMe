@@ -9,7 +9,7 @@ import InformationPage from '../pages/information';
 
 export const router = createHashRouter([
     {
-        path: '/',
+        path: '#/',
         element: <App />,
         children: [
             { path: '', element: <Home /> },                     // /
