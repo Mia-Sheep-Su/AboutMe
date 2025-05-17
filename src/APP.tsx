@@ -7,7 +7,7 @@ import styles from "./styles/App.module.css";
 
 function App() {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/' || location.hash === '#/';
 
   const isMobile = window.innerWidth <= 768;
   const [isOpen, setIsOpen] = useState(false);
