@@ -66,8 +66,8 @@ export default function About() {
                     <h2>作品連結</h2>
                     <ul>
                         <li><a href="https://mia-sheep-su.github.io/MyHamsterTest/" target="_blank">🧠 MyHamsterTest 心理測驗網站</a></li>
-                        <li><a href="https://taiwanexcellent.jp/" target="_blank">🌐 台灣精品日文電商平台</a></li>
                         <li><a href="https://github.com/Mia-Sheep-Su/MyHamsterTest" target="_blank">📁 GitHub 原始碼</a></li>
+                        <li><a href="https://taiwanexcellent.jp/" target="_blank">🌐 台灣精品日文電商平台</a></li>
                     </ul>
                 </section>
             </div>
