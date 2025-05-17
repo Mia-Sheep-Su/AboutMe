@@ -1,4 +1,5 @@
-import { createBrowserRouter } from 'react-router-dom';
+//import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import App from "../APP";
 import Home from "../pages/Home";
 import Resume from '../pages/Resume';
@@ -6,7 +7,7 @@ import About from '../pages/About';
 import MyHamsterTest from '../pages/MyHamsterTest';
 import InformationPage from '../pages/information';
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: '/',
         element: <App />,
