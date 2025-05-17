@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { toast } from "react-toastify";
 import styles from "../styles/KVAnimation.module.css";
 import { Dropdown4 } from './Dropdown';
+import.meta.env.BASE_URL
 
-const imageList = Array.from({ length: 12 }, (_, i) => `/img/KV/${String(i + 1).padStart(2, '0')}.jpg`);
+const imageList = Array.from({ length: 12 }, (_, i) => `${import.meta.env.BASE_URL}img/KV/${String(i + 1).padStart(2, '0')}.jpg`
+);
 const items = [
     { label: "GitHub", icon: "github", href: "https://github.com/Mia-Sheep-Su" },
     { label: "Instagran", icon: "instagram", href: "https://www.instagram.com/m_0713_su/" },

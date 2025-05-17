@@ -126,7 +126,7 @@ export const Sidebar = ({ Opennow }: { Opennow: boolean }) => {
         <>
             <aside className={`${styles.sidebar} ${isMobileMenuOpen ? styles.mobileActive : ''}`}>
                 <div className={styles["sidebar-left"]} onClick={(e) => e.stopPropagation()}>
-                    <img src="/logo/Logo.svg" />
+                    <img src={`${import.meta.env.BASE_URL}/logo/Logo.svg`} />
                     {navItems.map(item => (
                         <button key={item} onClick={() => setActiveSection(item)}>
                             <Icon icon={item} />
