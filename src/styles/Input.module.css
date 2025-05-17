@@ -1,0 +1,12 @@
+.inputbox {
+    font-family: "SF Pro";
+    margin-bottom: 16px;
+}
+
+.inputbox input {
+    display: block;
+    width: 80%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 18px;
+}

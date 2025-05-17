@@ -1,0 +1,139 @@
+.dropdown {
+    position: relative;
+    perspective: 400px;
+    color: #0d0d0d;
+    font-family: "SF Pro";
+}
+
+.dropdown :is(button, a, ul, .button-inner) {
+    transform-origin: 50% 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background 0.3s, scale 0.3s;
+}
+
+a {
+    text-decoration: none;
+}
+
+.dropdown button,
+.dropdown a {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+    height: 60px;
+    width: 160px;
+    gap: 12px;
+    padding: 0 30px 0 20px;
+    cursor: pointer;
+    border-radius: 18px;
+}
+
+svg {
+    margin: 0 0 0 10px;
+}
+
+.dropdown>button span {
+    font-size: 28px;
+}
+
+.dropdown>button .button-inner {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.dropdown>a .button-inner {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.dropdown ul {
+    border-radius: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #F2F2F2;
+    transform: rotateX(-90deg) translateZ(60px);
+    width: 160px;
+}
+
+.dropdown.open ul {
+    border-radius: 18px;
+    transform: rotate(0) translateZ(60px);
+}
+
+.dropdown ul button {
+    border-radius: 18px;
+    justify-content: flex-start;
+    gap: 10px;
+    text-transform: capitalize;
+    padding: 0 8px;
+}
+
+.dropdown ul a {
+    border-radius: 18px;
+    justify-content: flex-start;
+    gap: 10px;
+    text-transform: capitalize;
+    padding: 0 8px;
+}
+
+.dropdown ul button:hover {
+    border-radius: 18px;
+    background: #c2c2c2;
+}
+
+.dropdown ul a:hover {
+    border-radius: 18px;
+    background: #c2c2c2;
+}
+
+.dropdown>button {
+    background: #F2F2F2;
+    transform: rotate(0);
+}
+
+.dropdown>a {
+    background: #F2F2F2;
+    transform: rotate(0);
+}
+
+.dropdown:not(.open)>button:hover {
+    scale: 1.05;
+}
+
+.dropdown:not(.open)>a:hover {
+    scale: 1.05;
+}
+
+.dropdown.open>button {
+    transform: rotateX(90deg);
+}
+
+.dropdown.open>a {
+    transform: rotateX(90deg);
+}
+
+.dropdown.open>button .button-inner {
+    opacity: 0;
+}
+
+.dropdown.open>a .button-inner {
+    opacity: 0;
+}

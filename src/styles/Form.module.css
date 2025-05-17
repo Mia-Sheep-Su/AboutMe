@@ -1,0 +1,110 @@
+.wrapper {
+    padding: 40px;
+    background-color: #1a1a1a;
+    color: #fdffff;
+    min-height: 100vh;
+    font-family: "SF Pro";
+}
+
+.cardList {
+    display: none;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #fdffff;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    font-size: 14px;
+}
+
+.table th,
+.table td {
+    padding: 16px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #333;
+}
+
+.table th {
+    background-color: #262626;
+    color: #fdffff;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table span {
+    font-size: 12px;
+}
+
+.table td:first-child {
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+    padding-right: 12px;
+}
+
+/* 手機排版支援 */
+@media screen and (max-width: 1024px) {
+    .table {
+        display: none;
+        /* ✅ 手機時隱藏原本表格 */
+    }
+
+    .cardList {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .cardItem {
+        background-color: #1c1c1c;
+        border: 1px solid #333;
+        padding: 16px;
+        border-radius: 8px;
+        color: #fdffff;
+    }
+
+    .cardItem h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+
+    .cardItem .section {
+        margin-bottom: 12px;
+    }
+
+    .cardItem .tags span {
+        display: inline-block;
+        margin-right: 6px;
+        margin-bottom: 4px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: white;
+    }
+
+    .cardItem strong {
+        display: inline-block;
+        margin-bottom: 4px;
+    }
+
+    .cardItem p {
+        font-size: 13px;
+        line-height: 1.5;
+        color: #ccc;
+    }
+}

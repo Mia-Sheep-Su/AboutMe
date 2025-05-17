@@ -1,0 +1,127 @@
+.aboutWrapper {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'SF Pro', sans-serif;
+    background-color: #f4f8fc;
+    /* ✅ 背景色 */
+    color: #111;
+}
+
+.aboutSidebar {
+    flex: 0 0 280px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+}
+
+.aboutSidebar h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.title {
+    font-size: 16px;
+    color: #666;
+}
+
+.location {
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: #888;
+}
+
+.summary {
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.aboutSidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.aboutSidebar li {
+    margin-bottom: 8px;
+}
+
+.aboutSidebar a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.aboutSidebar a:hover {
+    text-decoration: underline;
+}
+
+.aboutContent {
+    flex-grow: 1;
+    padding: 48px;
+    overflow-y: auto;
+    background-color: #f9fbfd;
+}
+
+.aboutContent h2 {
+    font-size: 22px;
+    margin-top: 32px;
+}
+
+.aboutContent h3 {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.aboutContent ul {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+@media screen and (max-width: 1024px) {
+    .aboutWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .aboutSidebar,
+    .aboutContent {
+        padding: 24px;
+        box-sizing: border-box;
+        /* ✅ 關鍵：確保 padding 不影響寬度 */
+    }
+
+    .aboutSidebar {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-top: 16px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p,
+    li {
+        font-size: 14px;
+    }
+
+    .aboutSidebar p,
+    .aboutSidebar li,
+    .aboutSidebar h1,
+    .aboutSidebar h2 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+}
