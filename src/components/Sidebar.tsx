@@ -83,19 +83,30 @@ const Header = () => (
     </header>
 );
 
-export const Sidebar = ({ Opennow }: { Opennow: boolean }) => {
+export const Sidebar = ({
+    Opennow,
+    onToggleMenu,
+    onCloseMenu,
+}: {
+    Opennow: boolean;
+    onToggleMenu?: () => void;
+    onCloseMenu?: () => void;
+}) => {
     const [activeSection, setActiveSection] = useState<string>("MdHome");
     const [modalMessage, setModalMessage] = useState<string | null>(null);
     const navigate = useNavigate();
-    /* 手機版漢堡選單 */
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const isMobile = window.innerWidth <= 1024;
+    //手機版漢堡選單
     const location = useLocation();
     const isLightPage = location.pathname === '/about';
+    const isMobile = window.innerWidth <= 1024;
 
     useEffect(() => {
-        setIsMobileMenuOpen(Opennow);
-    }, [Opennow]);
+        const closeOnEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onCloseMenu?.();
+        };
+        document.addEventListener("keydown", closeOnEsc);
+        return () => document.removeEventListener("keydown", closeOnEsc);
+    }, []);
 
     const handleButtonClick = (name: string) => {
         switch (name) {
@@ -121,10 +132,14 @@ export const Sidebar = ({ Opennow }: { Opennow: boolean }) => {
                 setModalMessage("尚未提供內容");
                 break;
         }
+        // ✅ 點擊後自動收合選單
+        if (isMobile) {
+            onCloseMenu?.();
+        }
     };
     return (
         <>
-            <aside className={`${styles.sidebar} ${isMobileMenuOpen ? styles.mobileActive : ''}`}>
+            <aside className={`${styles.sidebar} ${Opennow ? styles.mobileActive : ''}`}>
                 <div className={styles["sidebar-left"]} onClick={(e) => e.stopPropagation()}>
                     <img src={`${import.meta.env.BASE_URL}/logo/Logo.svg`} />
                     {navItems.map(item => (
@@ -154,12 +169,16 @@ export const Sidebar = ({ Opennow }: { Opennow: boolean }) => {
             {modalMessage && (
                 <NoticeModal message={modalMessage} onClose={() => setModalMessage(null)} />
             )}
-            {/* 手機版 */}
+            {/* 手機版漢堡按鈕 */}
             {isMobile && (
                 <div className={styles.hamburgerbox}>
-                    <button className={`${styles.hamburger} ${isLightPage ? styles.dark : ''}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} >
+                    <button
+                        className={`${styles.hamburger} ${isLightPage ? styles.dark : ''}`}
+                        onClick={onToggleMenu}
+                    >
                         <HiMenuAlt3 />
-                    </button></div>
+                    </button>
+                </div>
             )}
         </>
     )

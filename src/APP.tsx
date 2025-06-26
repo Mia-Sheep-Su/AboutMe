@@ -19,7 +19,9 @@ function App() {
       )}
       <div className={!isHome ? styles["app-layout"] : ""}>
         <div className={!isHome ? styles.sidebar : styles.sidebarinhome} onClick={() => setIsOpen(!isOpen)}>
-          <Sidebar Opennow={isOpen} />
+          <Sidebar Opennow={isOpen}
+            onToggleMenu={() => setIsOpen((prev) => !prev)}
+            onCloseMenu={() => setIsOpen(false)} />
         </div>
         {isHome ? (
           <div className={styles.kvAnimation}>
