@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.sidebar {
+.sidebarWrapper {
     width: 100px;
     flex-shrink: 0;
     z-index: 100;
@@ -12,7 +12,7 @@
     display: none;
 }
 
-.sidebarinhome {
+.sidebarHomeWrapper {
     position: absolute;
     /* ✅ 不佔用 layout 空間 */
     top: 0;
@@ -38,7 +38,7 @@
         flex-direction: column;
     }
 
-    .sidebar {
+    .sidebarWrapper {
         width: 100%;
         position: fixed;
         height: 100vh;
@@ -48,11 +48,11 @@
         transition: left 0.3s ease;
     }
 
-    .sidebar.mobileActive {
+    .sidebarWrapper.mobileActive {
         left: 0;
     }
 
-    .sidebarinhome {
+    .sidebarHomeWrapper {
         position: fixed;
         width: 100%;
         height: 100vh;
@@ -61,7 +61,7 @@
         transition: left 0.3s ease;
     }
 
-    .sidebarinhome.mobileActive {
+    .sidebarHomeWrapper.mobileActive {
         left: 0;
     }
 

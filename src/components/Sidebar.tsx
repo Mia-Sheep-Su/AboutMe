@@ -105,8 +105,9 @@ export const Sidebar = ({
             if (e.key === "Escape") onCloseMenu?.();
         };
         document.addEventListener("keydown", closeOnEsc);
+        console.log("Sidebar 接收到的 Opennow:", Opennow);
         return () => document.removeEventListener("keydown", closeOnEsc);
-    }, []);
+    }, [Opennow]);
 
     const handleButtonClick = (name: string) => {
         switch (name) {
@@ -155,7 +156,7 @@ export const Sidebar = ({
                         ))}
                     </div>
                 </div>
-                <div className={styles["sidebar-right"]}>
+                <div className={styles["sidebar-right"]} onClick={(e) => e.stopPropagation()}>
                     <div className={styles["sidebar-right-inner"]}>
                         <Header />
                         <nav>

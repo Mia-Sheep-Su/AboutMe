@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { KVAnimation } from './components/KVAnimation';
@@ -12,13 +12,18 @@ function App() {
   const isMobile = window.innerWidth <= 768;
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    console.log("Sidebar 開關狀態 isOpen:", isOpen);
+  }, [isOpen]);
+
+
   return (
     <>
       {isMobile && isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       )}
       <div className={!isHome ? styles["app-layout"] : ""}>
-        <div className={!isHome ? styles.sidebar : styles.sidebarinhome} onClick={() => setIsOpen(!isOpen)}>
+        <div className={!isHome ? styles.sidebarWrapper : styles.sidebarHomeWrapper}>
           <Sidebar Opennow={isOpen}
             onToggleMenu={() => setIsOpen((prev) => !prev)}
             onCloseMenu={() => setIsOpen(false)} />
