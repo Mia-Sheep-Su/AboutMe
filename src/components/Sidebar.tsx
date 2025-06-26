@@ -98,18 +98,40 @@ export const Sidebar = ({
     //手機版漢堡選單
     const location = useLocation();
     const isLightPage = location.pathname === '/about';
-    const isMobile = window.innerWidth <= 1024;
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const closeOnEsc = (e: KeyboardEvent) => {
             if (e.key === "Escape") onCloseMenu?.();
         };
         document.addEventListener("keydown", closeOnEsc);
-        console.log("Sidebar 接收到的 Opennow:", Opennow);
         return () => document.removeEventListener("keydown", closeOnEsc);
-    }, [Opennow]);
+    }, [onCloseMenu]);
+
 
     const handleButtonClick = (name: string) => {
+        if (isMobile) {
+            console.log("準備收起選單...");
+            onCloseMenu?.();
+            setTimeout(() => {
+                console.log("導航中...", name);
+                navigateTo(name);
+            }, 400);
+        } else {
+            navigateTo(name);
+        }
+    };
+
+    const navigateTo = (name: string) => {
         switch (name) {
             case "Home":
                 navigate("/");
@@ -120,9 +142,6 @@ export const Sidebar = ({
             case "My Hamster Test":
                 navigate("/myhamstertest");
                 break;
-            // case "Hamster Images":
-            //     navigate("/Hamsterpicture");
-            //     break;
             case "Mail":
                 window.location.href = "mailto:miasu713@gmail.com";
                 break;
@@ -133,11 +152,8 @@ export const Sidebar = ({
                 setModalMessage("尚未提供內容");
                 break;
         }
-        // ✅ 點擊後自動收合選單
-        if (isMobile) {
-            onCloseMenu?.();
-        }
     };
+
     return (
         <>
             <aside className={`${styles.sidebar} ${Opennow ? styles.mobileActive : ''}`}>

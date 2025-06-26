@@ -178,12 +178,15 @@ body {
     font-size: 18px;
 }
 
-.sidebar:hover {
-    width: 300px;
-}
+/* 桌面版 hover 展開 */
+@media screen and (min-width: 1025px) {
+    .sidebar:hover {
+        width: 300px;
+    }
 
-.sidebar:hover .sidebar-right {
-    width: 225px;
+    .sidebar:hover .sidebar-right {
+        width: 225px;
+    }
 }
 
 /* 手機時隱藏 sidebar，點擊漢堡再浮出 */
@@ -194,15 +197,13 @@ body {
         left: 0;
         height: 100vh;
         width: 0;
-        overflow: hidden;
         transition: width 0.3s ease;
         z-index: 1000;
         background: #1c1c1c;
     }
 
     .sidebar.mobileActive {
-        width: 280px;
-        /* 或你想要的寬度 */
+        width: 80vw;
     }
 
     .hamburgerbox {
@@ -225,7 +226,6 @@ body {
 
     .hamburger.dark {
         color: #1c1c1c;
-        /* 深色背景用白，亮色背景用黑 */
     }
 
     .sidebar-left img {

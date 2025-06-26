@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from "react";
 import { Outlet, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
@@ -9,7 +8,16 @@ function App() {
   const location = useLocation();
   const isHome = location.pathname === '/' || location.hash === '#/';
 
-  const isMobile = window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -23,7 +31,10 @@ function App() {
         <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       )}
       <div className={!isHome ? styles["app-layout"] : ""}>
-        <div className={!isHome ? styles.sidebarWrapper : styles.sidebarHomeWrapper}>
+        <div className={`
+          ${!isHome ? styles.sidebarWrapper : styles.sidebarHomeWrapper}
+          ${isOpen ? styles.mobileActive : ''}
+        `}>
           <Sidebar Opennow={isOpen}
             onToggleMenu={() => setIsOpen((prev) => !prev)}
             onCloseMenu={() => setIsOpen(false)} />
