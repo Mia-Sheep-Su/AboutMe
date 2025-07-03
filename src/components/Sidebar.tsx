@@ -145,6 +145,9 @@ export const Sidebar = ({
             case "Mail":
                 window.location.href = "mailto:miasu713@gmail.com";
                 break;
+            case "New Product":
+                window.location.href = "https://mia-sheep-su.github.io/PromotionsSales/";
+                break;
             case "Input information":
                 navigate("/information");
                 break;
